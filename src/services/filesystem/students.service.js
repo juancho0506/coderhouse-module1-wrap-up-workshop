@@ -1,4 +1,5 @@
 import __dirname from '../../util.js';
+import fileSystem from 'fs';
 
 export default class StudentService {
     #students;
@@ -11,7 +12,7 @@ export default class StudentService {
         this.#students = new Array();
         this.#dirPath = __dirname+'/files';
         this.#filePath = this.#dirPath+"/students.json";
-        this.#fileSystem = require("fs");
+        this.#fileSystem = fileSystem;
     }
 
     #prepararDirectorioBase = async () =>{

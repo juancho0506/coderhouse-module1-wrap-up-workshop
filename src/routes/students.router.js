@@ -6,7 +6,14 @@ const router = Router();
 const studentService = new StudentService();
 
 router.get('/',async(req,res)=>{
-    //TODO: Resolver esta ruta GET para poder sacar de la persistencia los estudiantes.
+    try {
+        let students = await studentService.getAll();
+        res.send(students);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({error:  error, message: "No se pudo obtener los estudiantes."});
+    }
+    
 })
 
 router.post('/',async(req,res)=>{
