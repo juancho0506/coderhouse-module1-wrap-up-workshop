@@ -30,9 +30,11 @@ export default class StudentService {
         student.id = Math.floor(Math.random()*20000+1);
         try {
             await this.#prepararDirectorioBase();
+            this.#students = await this.getAll();
             this.#students.push(student);
             //Se sobreescribe el archivos de usuarios para persistencia.
             await this.#fileSystem.promises.writeFile(this.#filePath, JSON.stringify(this.#students));
+            return student;
             
         } catch (error) {
             console.error(`Error guardando recurso: ${JSON.stringify(usuarioNuevo)}, detalle del error: ${error}`);

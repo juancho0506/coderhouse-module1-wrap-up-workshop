@@ -1,4 +1,5 @@
 import __dirname from '../../util.js';
+import fileSystem from 'fs';
 
 export default class CourseService {
     #courses;
@@ -11,7 +12,7 @@ export default class CourseService {
         this.#courses = new Array();
         this.#dirPath = __dirname+'/files';
         this.#filePath = this.#dirPath+"/courses.json";
-        this.#fileSystem = require("fs");
+        this.#fileSystem = fileSystem;
     }
 
     #prepararDirectorioBase = async () =>{
@@ -29,6 +30,7 @@ export default class CourseService {
         curso.id = Math.floor(Math.random()*20000+1);
         try {
             await this.#prepararDirectorioBase();
+            this.#courses = await this.getAll();
             this.#courses.push(curso);
             //Se sobreescribe el archivos de cursos para persistencia.
             await this.#fileSystem.promises.writeFile(this.#filePath, JSON.stringify(this.#courses));

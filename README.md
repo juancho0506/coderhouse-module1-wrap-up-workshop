@@ -26,7 +26,7 @@ Todos los campos deben ser requeridos obligatoriamente ({ required: true })
 
 Crear la capa de persistencia de nuestra app, Esto implica:
 
-- Crear un dao para manejar las operaciones de la BD MongoDB usando Mongoose para crear nuestro CRUD.
+- Crear un dao o service para manejar las operaciones de la BD MongoDB usando Mongoose para crear nuestro CRUD.
 - Crear la posiblidad de usar un filesystem para persistir la misma data, es decir que existirá otro dao para manejo por filesystem.
 
 ## Generar el API REST para interactuar con la data: 

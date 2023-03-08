@@ -1,20 +1,20 @@
 import {Router} from 'express';
-import Users from '../dao/dbManagers/users.js';
-import Courses from '../dao/dbManagers/courses.js';
+import StudentService from '../services/db/students.service.js';
+import CourseService from '../services/db/courses.service.js';
 
-const usersManager = new Users();
-const coursesManager = new Courses();
+const studentService = new StudentService();
+const courseService = new CourseService();
 
 const router = Router();
 
 router.get('/',async(req,res)=>{
-    let users = await usersManager.getAll();
-    console.log(users);
-    res.render('users',{users})
+    let students = await studentService.getAll();
+    console.log(students);
+    res.render('students',{students: students})
 })
 
 router.get('/courses',async(req,res)=>{
-    let courses = await coursesManager.getAll();
+    let courses = await courseService.getAll();
     console.log(courses);
     res.render('courses',{courses})
 })

@@ -1,3 +1,16 @@
-import coursesModel from "./models/courses.js";
+import {coursesModel} from "./models/courses.js";
 
-//TODO: Implementar las operaciones CRUD:
+export default class StudentService {
+    constructor() { 
+        console.log("Working courses with Database persistence in mongodb");
+    }
+
+    getAll = async () => {
+        let courses = await coursesModel.find();
+        return courses.map(course=>course.toObject());
+    }
+    save = async (course) => {
+        let result = await coursesModel.create(course);
+        return result;
+    }
+}

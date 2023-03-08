@@ -1,4 +1,10 @@
 {{#each students}}
-    <p>{{this.first_name}}</p>
-    <p>{{this.email}}</p>
+    <p>Name: {{this.name}}</p>
+    <p>Last Name: {{this.lastName}}</p>
+    <p>Age: {{this.age}}</p>
+    Courses: <br><p>
+    {{#each courses}}
+       <p>{{this}}</p>
+    {{/each}}
+    </p>
 {{/each}}
