@@ -22,7 +22,6 @@ const courseSchema = new mongoose.Schema({
         type:Array,
         default:[]
     }
-    
 });
 
 export const coursesModel = mongoose.model(collectionName, courseSchema);

@@ -19,10 +19,17 @@ const studentSchema = new mongoose.Schema({
     lastName: stringTypeSchemaNonUniqueRequired,
     age: stringTypeSchemaNonUniqueRequired,
     courses: {
-        type:Array,
+        type: [
+            {
+                course: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "courses"
+                }
+            }
+        ],
         default:[]
     }
     
 });
-
-export const studentsModel = mongoose.model(collectionName, studentSchema);
+const studentsModel = mongoose.model(collectionName, studentSchema);
+export default studentsModel;
