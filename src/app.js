@@ -53,8 +53,8 @@ const connectMongoDB = async ()=>{
             }
         );*/
 
-        let student = await studentsModel.findById({_id: "640a705f72d18c48ca6f6741"}).populate("courses.course");
-        console.log(JSON.stringify(student));
+        let student = await studentsModel.findOne({_id: "640a705f72d18c48ca6f6741"});
+        console.log(JSON.stringify(student, null, '\t'));
         //student.courses.push({course: "640a719de27c256369c70d15"});
         //console.log(JSON.stringify(student));
         //let result = await studentsModel.updateOne(student);
